@@ -30,10 +30,15 @@ tol = 1e-9;
 % calculate spectral radius 
 lambda = abs(eigs(W, 1, 'largestabs'));
 
+
 z_katz = katz_centrality(W, lambda, beta, mi, z_0, tol);
+printf('Katz centrality computed: \n');
+disp(z_katz);
 
 %exercise 2.b
 z_pageRank = pageRank_centrality(P, beta, mi, z_0, tol);
+printf('PageRank centrality computed: \n');
+disp(z_pageRank);
 
 %exercise 2.c
 %barplot that shows z_katz and z_pageRank
