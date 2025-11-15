@@ -1,4 +1,3 @@
 # NetworkDynamicsAndLearning
 
-Link al progetto Overleaf
-https://www.overleaf.com/read/hhpjwxqgsgjt#074a3f
+This repository contains the homeworks completed by the group composed of Anna Roma (Matr. 345819) and Stefano Giulianelli (Matr. 347911).
