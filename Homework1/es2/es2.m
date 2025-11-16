@@ -20,7 +20,7 @@ P(:,somma_colonne==0) = 0;
 
 %plot(G);
 
-%exercise 2.a
+%% exercise 2.a
 % compute Katz centrality 
 beta = 0.15;
 mi = ones(numberOfNodes,1)/numberOfNodes;
@@ -37,12 +37,7 @@ for i = 1:length(z_katz)
     fprintf('Node %d: %.6f\n', i, z_katz(i));
 end
 
-
-
-
-
-
-%exercise 2.b
+%% exercise 2.b
 z_pageRank = pageRank_centrality(P, beta, mi, z_0, tol);
 fprintf('PageRank centrality computed:\n');
 for i = 1:length(z_pageRank)
@@ -57,7 +52,7 @@ end
 %xticks(1:numberOfNodes); 
 %xticklabels(G.Nodes.Name);
 
-%exercise 2.c
+%% exercise 2.c
 %barplot that shows z_katz and z_pageRank
 Z = [z_katz(:) z_pageRank(:)];
 
@@ -68,7 +63,7 @@ Z = [z_katz(:) z_pageRank(:)];
 %legend('Katz Centrality Vector', 'PageRank Centrality Vector');
 %xticks(1:numberOfNodes);
 
-%exercise 2.d
+%% exercise 2.d
 beta_vec = [0 1/4 1/2 3/4 1];
 beta_len = length(beta_vec);
 Z_out = zeros(numberOfNodes, beta_len);

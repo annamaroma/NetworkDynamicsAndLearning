@@ -40,21 +40,21 @@ G.Nodes.Name = names(:);
 plot(G);
 
 
-% exercise 3.a
+%% exercise 3.a
 %find the shortest path between node 1 and node 17
 [path, pathLength] = shortestpath(G, 'n1', 'n17', 'Method', 'positive');
 fprintf('Shortest path from n1 to n17: \n');
 disp(path);
 fprintf('Path length: %d\n', pathLength);
 
-% exercise 3.b
+%% exercise 3.b
 % find the maximum flow between node 1 and node 17
 G_cap = digraph(s, t, C);
 G_cap.Nodes.Name = names(:);
 mf = maxflow(G_cap, 1, 17);
 fprintf('Maximum flow from n1 to n17: %d\n', mf);
 
-% exercise 3.c
+%% exercise 3.c
 % Given the flow vector in flow.mat, compute the vector ν satisfying Bf = ν.
 % In the following, we assume that the exogenous inflow is zero in all the nodes except for node 1,
 % for which ν1 has the same value computed in the point (c), and node 17, for which ν17 = −ν1.
@@ -64,7 +64,7 @@ nu = B * f;
 disp('Vector nu satisfying Bf = nu:');
 disp(nu);
 
-% exercise 3.d 
+%% exercise 3.d 
 objective = @(f) sum(f .* l ./ (1 - f./C)); % Objective function
 
 f_init = f; 
@@ -88,7 +88,7 @@ disp(f_star_fmincon);
 fprintf('Total cost (total travel time):\n');
 disp(cost);
 
-% exercise 3.e
+%% exercise 3.e
 fprintf('Computing Wardrop equilibrium with fmincon...\n');
 wardrop_objective = @(f) sum(-C.*l.*log(1-f./C));
 
@@ -107,7 +107,7 @@ total_travel_time_wardrop_fmincon = sum(f_wardrop_fmincon .* l ./ (1 - f_wardrop
 fprintf('Total travel time for Wardrop equilibrium flow:\n');
 disp(total_travel_time_wardrop_fmincon);
 
-% exercise 3.f
+%% exercise 3.f
 fprintf('\n--- Exercise 3.f (marginal-cost tolls) ---\n');
 % Introduce tolls such that the toll on link e is omega_e = f*_e * tau'_e(f*_e)
 % where tau_e(f) = l_e / (1 - f/C_e).
@@ -150,7 +150,7 @@ else
     fprintf('Wardrop with tolls differs from social optimum (see norm above).\n');
 end
 
-% exercise 3.g
+%% exercise 3.g
 fprintf('\n--- Exercise 3.g (system cost = total additional travel time) ---\n');
 % Define system cost psi_e(f_e) = f_e*(tau_e(f_e) - l_e)
 objective_psi = @(x) sum( x .* ( l ./ (1 - x ./ C) - l ) );
