@@ -32,13 +32,30 @@ lambda = abs(eigs(W, 1, 'largestabs'));
 
 
 z_katz = katz_centrality(W, lambda, beta, mi, z_0, tol);
-printf('Katz centrality computed: \n');
-disp(z_katz);
+fprintf('Katz centrality computed:\n');
+for i = 1:length(z_katz)
+    fprintf('Node %d: %.6f\n', i, z_katz(i));
+end
+
+
+
+
+
 
 %exercise 2.b
 z_pageRank = pageRank_centrality(P, beta, mi, z_0, tol);
-printf('PageRank centrality computed: \n');
-disp(z_pageRank);
+fprintf('PageRank centrality computed:\n');
+for i = 1:length(z_pageRank)
+    fprintf('Node %d: %.6f\n', i, z_pageRank(i));
+end
+
+%grafico che plotta  
+%figure; 
+%bar(z_pageRank); 
+%ylabel('PageRank centrality value'); 
+%title('PageRank Centrality Values for each Node'); 
+%xticks(1:numberOfNodes); 
+%xticklabels(G.Nodes.Name);
 
 %exercise 2.c
 %barplot that shows z_katz and z_pageRank
@@ -49,7 +66,7 @@ Z = [z_katz(:) z_pageRank(:)];
 %ylabel('centrality reached');
 %title('Comparison between Katz and PageRank Centrality Algorithms');
 %legend('Katz Centrality Vector', 'PageRank Centrality Vector');
-%xticks(1:15);
+%xticks(1:numberOfNodes);
 
 %exercise 2.d
 beta_vec = [0 1/4 1/2 3/4 1];
@@ -69,6 +86,6 @@ bar(Z_out, 'grouped');
 ylabel('centrality reached');
 title('PageRank Centrality Algorithm with different beta');
 legend('beta = 0', 'beta = 1/4', 'beta = 1/2', 'beta = 3/4', 'beta = 1');
-xticks(1:15);
+xticks(1:numberOfNodes);
 
 
